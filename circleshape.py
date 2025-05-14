@@ -20,3 +20,7 @@ class CircleShape(pygame.sprite.Sprite):
     def update(self, dt):
         # sub-classes must override
         pass
+
+    def is_collading(self, other_circleshape):
+        distance = pygame.math.Vector2.distance_to(self.position, other_circleshape.position)
+        return distance <= self.radius + other_circleshape.radius
