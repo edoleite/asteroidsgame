@@ -50,7 +50,9 @@ def main():
         dt = clock.tick(60) /1000
 
         for updatable in updatables:
-            updatable.update(dt)       
+            updatable.update(dt)
+
+               
 
         #checking for collisions
         for asteroid in asteroids:
@@ -61,7 +63,10 @@ def main():
                 pygame.time.delay(3000)
                 pygame.quit()  # Ensures Pygame shuts down cleanly
                 sys.exit()
-
+            for shot in shots:
+                if asteroid.is_collading(shot):
+                    asteroid.split()
+                    shot.kill()
         
         
 def draw_game_over(screen):
